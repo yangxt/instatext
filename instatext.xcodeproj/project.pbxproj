@@ -1,0 +1,476 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FA620DAE16EF880400C49BC3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA620DAD16EF880400C49BC3 /* UIKit.framework */; };
+		FA620DB016EF880400C49BC3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA620DAF16EF880400C49BC3 /* Foundation.framework */; };
+		FA620DB216EF880400C49BC3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA620DB116EF880400C49BC3 /* CoreGraphics.framework */; };
+		FA620DB816EF880400C49BC3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA620DB616EF880400C49BC3 /* InfoPlist.strings */; };
+		FA620DBA16EF880400C49BC3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA620DB916EF880400C49BC3 /* main.m */; };
+		FA620DBE16EF880400C49BC3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA620DBD16EF880400C49BC3 /* AppDelegate.m */; };
+		FA620DC016EF880400C49BC3 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FA620DBF16EF880400C49BC3 /* Default.png */; };
+		FA620DC216EF880400C49BC3 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA620DC116EF880400C49BC3 /* Default@2x.png */; };
+		FA620DC416EF880400C49BC3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA620DC316EF880400C49BC3 /* Default-568h@2x.png */; };
+		FA620DC716EF880400C49BC3 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA620DC516EF880400C49BC3 /* MainStoryboard_iPhone.storyboard */; };
+		FA620DCA16EF880400C49BC3 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA620DC816EF880400C49BC3 /* MainStoryboard_iPad.storyboard */; };
+		FA620DCD16EF880400C49BC3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA620DCC16EF880400C49BC3 /* ViewController.m */; };
+		FA620DD516EF880400C49BC3 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA620DD416EF880400C49BC3 /* SenTestingKit.framework */; };
+		FA620DD616EF880400C49BC3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA620DAD16EF880400C49BC3 /* UIKit.framework */; };
+		FA620DD716EF880400C49BC3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA620DAF16EF880400C49BC3 /* Foundation.framework */; };
+		FA620DDF16EF880400C49BC3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA620DDD16EF880400C49BC3 /* InfoPlist.strings */; };
+		FA620DE216EF880400C49BC3 /* instatextTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA620DE116EF880400C49BC3 /* instatextTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FA620DD816EF880400C49BC3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA620DA016EF880400C49BC3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA620DA816EF880400C49BC3;
+			remoteInfo = instatext;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FA620DA916EF880400C49BC3 /* instatext.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = instatext.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA620DAD16EF880400C49BC3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		FA620DAF16EF880400C49BC3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FA620DB116EF880400C49BC3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FA620DB516EF880400C49BC3 /* instatext-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "instatext-Info.plist"; sourceTree = "<group>"; };
+		FA620DB716EF880400C49BC3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FA620DB916EF880400C49BC3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FA620DBB16EF880400C49BC3 /* instatext-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "instatext-Prefix.pch"; sourceTree = "<group>"; };
+		FA620DBC16EF880400C49BC3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FA620DBD16EF880400C49BC3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FA620DBF16EF880400C49BC3 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		FA620DC116EF880400C49BC3 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		FA620DC316EF880400C49BC3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		FA620DC616EF880400C49BC3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		FA620DC916EF880400C49BC3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		FA620DCB16EF880400C49BC3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		FA620DCC16EF880400C49BC3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		FA620DD316EF880400C49BC3 /* instatextTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = instatextTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA620DD416EF880400C49BC3 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		FA620DDC16EF880400C49BC3 /* instatextTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "instatextTests-Info.plist"; sourceTree = "<group>"; };
+		FA620DDE16EF880400C49BC3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FA620DE016EF880400C49BC3 /* instatextTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = instatextTests.h; sourceTree = "<group>"; };
+		FA620DE116EF880400C49BC3 /* instatextTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = instatextTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FA620DA616EF880400C49BC3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA620DAE16EF880400C49BC3 /* UIKit.framework in Frameworks */,
+				FA620DB016EF880400C49BC3 /* Foundation.framework in Frameworks */,
+				FA620DB216EF880400C49BC3 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA620DCF16EF880400C49BC3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA620DD516EF880400C49BC3 /* SenTestingKit.framework in Frameworks */,
+				FA620DD616EF880400C49BC3 /* UIKit.framework in Frameworks */,
+				FA620DD716EF880400C49BC3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FA620D9E16EF880400C49BC3 = {
+			isa = PBXGroup;
+			children = (
+				FA620DB316EF880400C49BC3 /* instatext */,
+				FA620DDA16EF880400C49BC3 /* instatextTests */,
+				FA620DAC16EF880400C49BC3 /* Frameworks */,
+				FA620DAA16EF880400C49BC3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FA620DAA16EF880400C49BC3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FA620DA916EF880400C49BC3 /* instatext.app */,
+				FA620DD316EF880400C49BC3 /* instatextTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FA620DAC16EF880400C49BC3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FA620DAD16EF880400C49BC3 /* UIKit.framework */,
+				FA620DAF16EF880400C49BC3 /* Foundation.framework */,
+				FA620DB116EF880400C49BC3 /* CoreGraphics.framework */,
+				FA620DD416EF880400C49BC3 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA620DB316EF880400C49BC3 /* instatext */ = {
+			isa = PBXGroup;
+			children = (
+				FA620DBC16EF880400C49BC3 /* AppDelegate.h */,
+				FA620DBD16EF880400C49BC3 /* AppDelegate.m */,
+				FA620DC516EF880400C49BC3 /* MainStoryboard_iPhone.storyboard */,
+				FA620DC816EF880400C49BC3 /* MainStoryboard_iPad.storyboard */,
+				FA620DCB16EF880400C49BC3 /* ViewController.h */,
+				FA620DCC16EF880400C49BC3 /* ViewController.m */,
+				FA620DB416EF880400C49BC3 /* Supporting Files */,
+			);
+			path = instatext;
+			sourceTree = "<group>";
+		};
+		FA620DB416EF880400C49BC3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FA620DB516EF880400C49BC3 /* instatext-Info.plist */,
+				FA620DB616EF880400C49BC3 /* InfoPlist.strings */,
+				FA620DB916EF880400C49BC3 /* main.m */,
+				FA620DBB16EF880400C49BC3 /* instatext-Prefix.pch */,
+				FA620DBF16EF880400C49BC3 /* Default.png */,
+				FA620DC116EF880400C49BC3 /* Default@2x.png */,
+				FA620DC316EF880400C49BC3 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FA620DDA16EF880400C49BC3 /* instatextTests */ = {
+			isa = PBXGroup;
+			children = (
+				FA620DE016EF880400C49BC3 /* instatextTests.h */,
+				FA620DE116EF880400C49BC3 /* instatextTests.m */,
+				FA620DDB16EF880400C49BC3 /* Supporting Files */,
+			);
+			path = instatextTests;
+			sourceTree = "<group>";
+		};
+		FA620DDB16EF880400C49BC3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FA620DDC16EF880400C49BC3 /* instatextTests-Info.plist */,
+				FA620DDD16EF880400C49BC3 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FA620DA816EF880400C49BC3 /* instatext */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA620DE516EF880400C49BC3 /* Build configuration list for PBXNativeTarget "instatext" */;
+			buildPhases = (
+				FA620DA516EF880400C49BC3 /* Sources */,
+				FA620DA616EF880400C49BC3 /* Frameworks */,
+				FA620DA716EF880400C49BC3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = instatext;
+			productName = instatext;
+			productReference = FA620DA916EF880400C49BC3 /* instatext.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FA620DD216EF880400C49BC3 /* instatextTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA620DE816EF880400C49BC3 /* Build configuration list for PBXNativeTarget "instatextTests" */;
+			buildPhases = (
+				FA620DCE16EF880400C49BC3 /* Sources */,
+				FA620DCF16EF880400C49BC3 /* Frameworks */,
+				FA620DD016EF880400C49BC3 /* Resources */,
+				FA620DD116EF880400C49BC3 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA620DD916EF880400C49BC3 /* PBXTargetDependency */,
+			);
+			name = instatextTests;
+			productName = instatextTests;
+			productReference = FA620DD316EF880400C49BC3 /* instatextTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FA620DA016EF880400C49BC3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Varun Jain";
+			};
+			buildConfigurationList = FA620DA316EF880400C49BC3 /* Build configuration list for PBXProject "instatext" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FA620D9E16EF880400C49BC3;
+			productRefGroup = FA620DAA16EF880400C49BC3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FA620DA816EF880400C49BC3 /* instatext */,
+				FA620DD216EF880400C49BC3 /* instatextTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FA620DA716EF880400C49BC3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA620DB816EF880400C49BC3 /* InfoPlist.strings in Resources */,
+				FA620DC016EF880400C49BC3 /* Default.png in Resources */,
+				FA620DC216EF880400C49BC3 /* Default@2x.png in Resources */,
+				FA620DC416EF880400C49BC3 /* Default-568h@2x.png in Resources */,
+				FA620DC716EF880400C49BC3 /* MainStoryboard_iPhone.storyboard in Resources */,
+				FA620DCA16EF880400C49BC3 /* MainStoryboard_iPad.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA620DD016EF880400C49BC3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA620DDF16EF880400C49BC3 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FA620DD116EF880400C49BC3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FA620DA516EF880400C49BC3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA620DBA16EF880400C49BC3 /* main.m in Sources */,
+				FA620DBE16EF880400C49BC3 /* AppDelegate.m in Sources */,
+				FA620DCD16EF880400C49BC3 /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA620DCE16EF880400C49BC3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA620DE216EF880400C49BC3 /* instatextTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FA620DD916EF880400C49BC3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA620DA816EF880400C49BC3 /* instatext */;
+			targetProxy = FA620DD816EF880400C49BC3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FA620DB616EF880400C49BC3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA620DB716EF880400C49BC3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		FA620DC516EF880400C49BC3 /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA620DC616EF880400C49BC3 /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		FA620DC816EF880400C49BC3 /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA620DC916EF880400C49BC3 /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		FA620DDD16EF880400C49BC3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA620DDE16EF880400C49BC3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FA620DE316EF880400C49BC3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FA620DE416EF880400C49BC3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FA620DE616EF880400C49BC3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "instatext/instatext-Prefix.pch";
+				INFOPLIST_FILE = "instatext/instatext-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		FA620DE716EF880400C49BC3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "instatext/instatext-Prefix.pch";
+				INFOPLIST_FILE = "instatext/instatext-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		FA620DE916EF880400C49BC3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/instatext.app/instatext";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "instatext/instatext-Prefix.pch";
+				INFOPLIST_FILE = "instatextTests/instatextTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		FA620DEA16EF880400C49BC3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/instatext.app/instatext";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "instatext/instatext-Prefix.pch";
+				INFOPLIST_FILE = "instatextTests/instatextTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FA620DA316EF880400C49BC3 /* Build configuration list for PBXProject "instatext" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA620DE316EF880400C49BC3 /* Debug */,
+				FA620DE416EF880400C49BC3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA620DE516EF880400C49BC3 /* Build configuration list for PBXNativeTarget "instatext" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA620DE616EF880400C49BC3 /* Debug */,
+				FA620DE716EF880400C49BC3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		FA620DE816EF880400C49BC3 /* Build configuration list for PBXNativeTarget "instatextTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA620DE916EF880400C49BC3 /* Debug */,
+				FA620DEA16EF880400C49BC3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FA620DA016EF880400C49BC3 /* Project object */;
+}

@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HorizontalList.h"
+#import "HorizontalListDelegate.h"
+#import "Stack.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<HorizontalListDelegate>{
+    NSMutableArray *mainCategoryItems;
+    NSMutableArray *textCategoryItems;
+    Stack *botttomBar;
+}
 
 @end

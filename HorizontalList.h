@@ -13,6 +13,7 @@
 #define DISTANCE_BETWEEN_ITEMS  15.0
 #define LEFT_PADDING            15.0
 #define ITEM_WIDTH              72.0
+#define ITEM_HEIGHT             72.0
 #define TITLE_HEIGHT            40.0
 
 
@@ -23,5 +24,5 @@
 @property (nonatomic, retain) UIScrollView *scrollView;
 @property (nonatomic, assign) id<HorizontalListDelegate> delegate;
 
-- (id)initWithFrame:(CGRect)frame items:(NSMutableArray *)items;
+- (id)initWithFrame:(CGRect)frame items:(NSMutableArray *)items numberOfRows:(NSUInteger)rows;
 @end

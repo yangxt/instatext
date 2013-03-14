@@ -11,18 +11,32 @@
 
 @implementation HorizontalList
 
-- (id)initWithFrame:(CGRect)frame items:(NSMutableArray *)items
+- (id)initWithFrame:(CGRect)frame items:(NSMutableArray *)items numberOfRows:(NSUInteger)rows
 {
     self = [super initWithFrame:frame];
     if (self) {
         NSLog(@"number of items %d", [items count]);
-
-        
-        self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, TITLE_HEIGHT, self.frame.size.width, self.frame.size.height)];
-        
         CGSize pageSize = CGSizeMake(ITEM_WIDTH, self.scrollView.frame.size.height);
-        NSUInteger page = 0;
         NSLog(@"page size %f ", pageSize.width);
+        NSUInteger numberOfColumns = [items count] / rows;
+        NSUInteger colIndex = 0;
+        NSUInteger rowIndex = 0;
+        
+        
+        self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, TITLE_HEIGHT, ITEM_WIDTH * (numberOfColumns + 1), ITEM_HEIGHT * rows)];
+        
+
+        for (colIndex = 0; colIndex < numberOfColumns; colIndex++) {
+            
+            for (rowIndex = 0; rowIndex < rows; rowIndex++) {
+                MainCategoryItem *item = [items objectAtIndex: colIndex * rows + rowIndex];
+                [item setFrame:CGRectMake(LEFT_PADDING + (ITEM_WIDTH + DISTANCE_BETWEEN_ITEMS) * colIndex, ITEM_HEIGHT * rowIndex, ITEM_WIDTH, ITEM_HEIGHT)];
+                UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(itemTapped:)];
+                [item addGestureRecognizer:singleFingerTap];
+                [self.scrollView addSubview:item];
+            }
+        }
+        /**
         for (MainCategoryItem *item in items) {
             [item setFrame:CGRectMake(LEFT_PADDING + (pageSize.width + DISTANCE_BETWEEN_ITEMS) * page++, 0, pageSize.width, pageSize.height)];
             UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(itemTapped:)];
@@ -30,8 +44,9 @@
             
             [self.scrollView addSubview:item];
         }
+         **/
         
-        self.scrollView.contentSize = CGSizeMake( LEFT_PADDING + [items count] * (pageSize.width + DISTANCE_BETWEEN_ITEMS), pageSize.height);
+        self.scrollView.contentSize = CGSizeMake( LEFT_PADDING + [items count] * (ITEM_WIDTH + DISTANCE_BETWEEN_ITEMS), pageSize.height);
         self.scrollView.showsHorizontalScrollIndicator = NO;
         self.scrollView.showsVerticalScrollIndicator = NO;
         self.scrollView.decelerationRate = UIScrollViewDecelerationRateFast;

@@ -30,7 +30,7 @@
     
     NSLog(@"main category item count %d", [mainCategoryItems count]);
     botttomBar = [[Stack alloc] init];
-    [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, 310.0, 320.0, 75.0) items:mainCategoryItems]];
+    [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, 10.0, 360.0, 275.0) items:mainCategoryItems numberOfRows:1]];
     [[botttomBar peekObject] setDelegate:self];
     
     [self.view addSubview:[botttomBar peekObject]];
@@ -82,11 +82,11 @@
     
     if ([item.imageTitle isEqualToString:@"Text"]) {
         
-        [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, 420.0, 320.0, 75.0) items:textCategoryItems]];
+        [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, 420.0, 320.0, 75.0) items:textCategoryItems numberOfRows:2]];
         [[botttomBar peekObject] setDelegate:self];
         [self.view addSubview:[botttomBar peekObject]];
     } else if ([item.imageTitle isEqualToString:@"Image"]) {
-        [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, 420.0, 320.0, 75.0) items:textCategoryItems]];
+        [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, 420.0, 320.0, 75.0) items:textCategoryItems numberOfRows:1]];
         [[botttomBar peekObject] setDelegate:self];
         [self.view addSubview:[botttomBar peekObject]];
     } else{

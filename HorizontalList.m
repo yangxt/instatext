@@ -22,7 +22,7 @@
         NSUInteger colIndex = 0;
         NSUInteger rowIndex = 0;
         
-        
+        self.rows = rows;
         self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, TITLE_HEIGHT, ITEM_WIDTH * (numberOfColumns + 1), ITEM_HEIGHT * rows)];
         
 
@@ -59,7 +59,7 @@
 }
 
 - (void) itemTapped: (UITapGestureRecognizer *)recognizer{
-    MainCategoryItem *item = (MainCategoryItem *)recognizer.view;
+    UIView *item = (UIView *)recognizer.view;
     
     if (item != nil) {
         [self.delegate didSelectItem: item];

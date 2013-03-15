@@ -10,5 +10,5 @@
 #import "MainCategoryItem.h"
 
 @protocol HorizontalListDelegate <NSObject>
-- (void) didSelectItem: (MainCategoryItem *)item;
+- (void) didSelectItem:  (id)item;
 @end

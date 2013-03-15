@@ -23,6 +23,7 @@
 
 @property (nonatomic, retain) UIScrollView *scrollView;
 @property (nonatomic, assign) id<HorizontalListDelegate> delegate;
+@property (nonatomic, assign) NSUInteger rows;
 
 - (id)initWithFrame:(CGRect)frame items:(NSMutableArray *)items numberOfRows:(NSUInteger)rows;
 @end

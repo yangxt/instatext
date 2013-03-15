@@ -14,6 +14,7 @@
 @interface ViewController : UIViewController<HorizontalListDelegate>{
     NSMutableArray *mainCategoryItems;
     NSMutableArray *textCategoryItems;
+    NSMutableArray *textFontCategoryItems;
     Stack *botttomBar;
 }
 

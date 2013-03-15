@@ -8,6 +8,10 @@
 
 #import "ViewController.h"
 #import "HorizontalList.h"
+#import "Constants.h"
+
+#define SCREEN_WDITH 320.0
+#define SCREEN_HEIGHT 460.0
 
 @interface ViewController ()
 
@@ -23,18 +27,20 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     //Initialize the informtion to feed the control
-    mainCategoryItems = [self putItemsFrom:@"mainCategoryItems"];
+    mainCategoryItems = [self putItemsFrom:PLIST_ITEM_MAIN];
     
     //Initialize the informtion to feed the control
-    textCategoryItems = [self putItemsFrom:@"textCategoryItems"];
+    textCategoryItems = [self putItemsFrom:PLIST_ITEM_TEXT];
+    
+    textFontCategoryItems = [self putItemsFrom:PLIST_ITEM_FONT];
     
     NSLog(@"main category item count %d", [mainCategoryItems count]);
     botttomBar = [[Stack alloc] init];
-    [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, 10.0, 360.0, 275.0) items:mainCategoryItems numberOfRows:1]];
+    [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, SCREEN_HEIGHT - 80, 320.0, 72) items:mainCategoryItems numberOfRows:1]];
     [[botttomBar peekObject] setDelegate:self];
     
     [self.view addSubview:[botttomBar peekObject]];
-
+    
 }
 
 - (NSMutableArray *) putItemsFrom: (NSString *)fromPathFile{
@@ -47,10 +53,12 @@
     for(int i = 0; i < items.count; ++i) {
         NSString *imageName = [items[i] objectForKey:@"image"];
         NSString *textName = [items[i] objectForKey:@"text"];
+        NSString *pList = [items[i] objectForKey:@"plist"];
+        
         NSLog(@"image %@", imageName);
         NSLog(@"textName %@", textName);
         
-        MainCategoryItem *item = [[MainCategoryItem alloc] initWithFrame:CGRectZero image:[UIImage imageNamed: imageName] text:textName];
+        MainCategoryItem *item = [[MainCategoryItem alloc] initWithFrame:CGRectZero image:[UIImage imageNamed: imageName] text:textName pList:pList];
         [containerArray addObject:item];
     }
     return containerArray;
@@ -75,31 +83,68 @@
 
 #pragma mark HorizontalListDelegate
 
-- (void) didSelectItem:(MainCategoryItem *)item {
-    NSLog(@"Horizontal List Item %@ selected", item.imageTitle);
-    
-    [self moveTo:CGPointMake(0, 345) duration:1.0 option:UIViewAnimationOptionCurveEaseIn horizontalList:[botttomBar peekObject]];
-    
-    if ([item.imageTitle isEqualToString:@"Text"]) {
+- (void) didSelectItem:(id)object {
+
+    if ([object isKindOfClass:[MainCategoryItem class]]) {
         
-        [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, 420.0, 320.0, 75.0) items:textCategoryItems numberOfRows:2]];
-        [[botttomBar peekObject] setDelegate:self];
-        [self.view addSubview:[botttomBar peekObject]];
-    } else if ([item.imageTitle isEqualToString:@"Image"]) {
-        [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, 420.0, 320.0, 75.0) items:textCategoryItems numberOfRows:1]];
-        [[botttomBar peekObject] setDelegate:self];
-        [self.view addSubview:[botttomBar peekObject]];
-    } else{
+        MainCategoryItem* item = (MainCategoryItem *)object;
         
-    }
+        if (item.pList != nil) {
+            
+            [self moveTo:CGPointMake(0, SCREEN_HEIGHT) duration:1.0 option:UIViewAnimationOptionCurveEaseIn horizontalList:[botttomBar peekObject]];
+            
+            if ([item.pList isEqualToString: PLIST_ITEM_TEXT]) {
                 
-    [self moveTo:CGPointMake(0, 245) duration:1.0 option:UIViewAnimationOptionCurveEaseIn horizontalList:[botttomBar peekObject]];
+                [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, SCREEN_HEIGHT , 320.0, 72.0) items:textCategoryItems numberOfRows:1]];
+                
+                
+            } else if ([item.pList isEqualToString:PLIST_ITEM_IMAGE]) {
+                
+                [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, SCREEN_HEIGHT , 320.0, 144.0) items:textCategoryItems numberOfRows:2]];
+                
+            } else if ([item.pList isEqualToString:PLIST_ITEM_FONT]) {
+                
+                [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, SCREEN_HEIGHT , 320.0, 144.0) items:textFontCategoryItems numberOfRows:2]];
+                
+            }
+            else{
+                
+            }
+            
+            [[botttomBar peekObject] setDelegate:self];
+            [self.view addSubview:[botttomBar peekObject]];
+            
+            if (((HorizontalList *)[botttomBar peekObject]).rows == 1) {
+                [self moveTo:CGPointMake(0, SCREEN_HEIGHT - 152 ) duration:1.0 option:UIViewAnimationOptionCurveEaseIn horizontalList:[botttomBar peekObject]];
+            } else if(((HorizontalList *)[botttomBar peekObject]).rows == 2) {
+                [self moveTo:CGPointMake(0, SCREEN_HEIGHT - 304 ) duration:1.0 option:UIViewAnimationOptionCurveEaseIn horizontalList:[botttomBar peekObject]];
+            } else{
+                
+            }
+            
+        }
+
+
+    }
+
+    
+
+    
 }
+
 - (IBAction)didPressBackButton:(id)sender {
     
-    [self moveTo:CGPointMake(0, 420) duration:1.0 option:UIViewAnimationOptionCurveEaseIn horizontalList:[botttomBar peekObject]];
+    [self moveTo:CGPointMake(0, SCREEN_HEIGHT) duration:1.0 option:UIViewAnimationOptionCurveEaseIn horizontalList:[botttomBar peekObject]];
     [botttomBar popObject];
-    
-    [self moveTo:CGPointMake(0, 245) duration:1.0 option:UIViewAnimationOptionCurveEaseIn horizontalList:[botttomBar peekObject]];
+    NSLog(@"number of rows %d", ((HorizontalList *)[botttomBar peekObject]).rows);
+    if (((HorizontalList *)[botttomBar peekObject]).rows == 1) {
+        NSLog(@"yya");
+        [self moveTo:CGPointMake(0, SCREEN_HEIGHT - 152 ) duration:1.0 option:UIViewAnimationOptionCurveEaseIn horizontalList:[botttomBar peekObject]];
+    } else if(((HorizontalList *)[botttomBar peekObject]).rows == 2) {
+        NSLog(@"bbba");
+        [self moveTo:CGPointMake(0, SCREEN_HEIGHT - 304 ) duration:1.0 option:UIViewAnimationOptionCurveEaseIn horizontalList:[botttomBar peekObject]];
+    } else{
+        NSLog(@"shit happened");
+    }
 }
 @end

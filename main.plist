@@ -7,24 +7,32 @@
 		<string>Text</string>
 		<key>image</key>
 		<string>home_icon_hot.png</string>
+	       <key>plist</key>
+	       <string>text</string>
 	</dict>
 	<dict>
 		<key>text</key>
 		<string>Image</string>
 		<key>image</key>
 		<string>home_icon_liked.png</string>
+	       <key>plist</key>
+	       <string>image</string>
 	</dict>
 	<dict>
 		<key>text</key>
-		<string>Popular</string>
+		<string>Stickers</string>
 		<key>image</key>
 		<string>home_icon_popular.png</string>
+	       <key>plist</key>
+	       <string>stickers</string>
 	</dict>
 	<dict>
 		<key>text</key>
-		<string>Rec</string>
+		<string>Borders</string>
 		<key>image</key>
 		<string>home_icon_rec.png</string>
+	       <key>plist</key>
+	       <string>borders</string>
 	</dict>
 </array>
 </plist>

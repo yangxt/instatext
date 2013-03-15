@@ -6,33 +6,33 @@
 		<key>text</key>
 		<string>Text</string>
 		<key>image</key>
-		<string>home_icon_hot.png</string>
-	       <key>plist</key>
-	       <string>text</string>
+		<string>font_btn_nm.png</string>
+		<key>plist</key>
+		<string>text</string>
 	</dict>
 	<dict>
 		<key>text</key>
 		<string>Image</string>
 		<key>image</key>
-		<string>home_icon_liked.png</string>
-	       <key>plist</key>
-	       <string>image</string>
+		<string>theme_btn.png</string>
+		<key>plist</key>
+		<string>image</string>
 	</dict>
 	<dict>
 		<key>text</key>
 		<string>Stickers</string>
 		<key>image</key>
 		<string>home_icon_popular.png</string>
-	       <key>plist</key>
-	       <string>stickers</string>
+		<key>plist</key>
+		<string>stickers</string>
 	</dict>
 	<dict>
 		<key>text</key>
 		<string>Borders</string>
 		<key>image</key>
 		<string>home_icon_rec.png</string>
-	       <key>plist</key>
-	       <string>borders</string>
+		<key>plist</key>
+		<string>borders</string>
 	</dict>
 </array>
 </plist>

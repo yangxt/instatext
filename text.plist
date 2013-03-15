@@ -6,7 +6,7 @@
 		<key>text</key>
 		<string>Font</string>
 		<key>image</key>
-		<string>home_icon_rec.png</string>
+		<string>fontselect_btn_n.png</string>
 		<key>plist</key>
 		<string>text_font</string>
 	</dict>
@@ -14,7 +14,7 @@
 		<key>text</key>
 		<string>Color</string>
 		<key>image</key>
-		<string>home_icon_liked.png</string>
+		<string>fontcolor_btn_n.png</string>
 		<key>plist</key>
 		<string>text_color</string>
 	</dict>
@@ -22,7 +22,7 @@
 		<key>text</key>
 		<string>Layout</string>
 		<key>image</key>
-		<string>home_icon_popular.png</string>
+		<string>fontaligment_btn_n.png</string>
 		<key>plist</key>
 		<string>text_layout</string>
 	</dict>
@@ -30,7 +30,7 @@
 		<key>text</key>
 		<string>Style</string>
 		<key>image</key>
-		<string>home_icon_rec.png</string>
+		<string>fontstyle_btn_n.png</string>
 		<key>plist</key>
 		<string>text_style</string>
 	</dict>

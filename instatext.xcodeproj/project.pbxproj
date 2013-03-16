@@ -29,7 +29,6 @@
 		FAB0049B16F0F6D4009C82BE /* text.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAB0049A16F0F6D4009C82BE /* text.plist */; };
 		FAB004A216F109F9009C82BE /* Stack.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB004A116F109F9009C82BE /* Stack.m */; };
 		FAB004A516F11CF0009C82BE /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAB004A416F11CF0009C82BE /* MainStoryboard_iPhone.storyboard */; };
-		FAE0A6D916F26CDD0016A6B7 /* text_font.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAE0A6D816F26CDD0016A6B7 /* text_font.plist */; };
 		FAE0A71516F379F40016A6B7 /* font_btn_nm.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE0A70916F379F40016A6B7 /* font_btn_nm.png */; };
 		FAE0A71616F379F40016A6B7 /* font_btn_nm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE0A70A16F379F40016A6B7 /* font_btn_nm@2x.png */; };
 		FAE0A71716F379F40016A6B7 /* camera_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE0A70C16F379F40016A6B7 /* camera_btn.png */; };
@@ -154,7 +153,6 @@
 		FAB004A316F11A8A009C82BE /* instatext.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = instatext.entitlements; sourceTree = "<group>"; };
 		FAB004A416F11CF0009C82BE /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		FAE0A6D416F261250016A6B7 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		FAE0A6D816F26CDD0016A6B7 /* text_font.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text_font.plist; sourceTree = "<group>"; };
 		FAE0A70916F379F40016A6B7 /* font_btn_nm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = font_btn_nm.png; sourceTree = "<group>"; };
 		FAE0A70A16F379F40016A6B7 /* font_btn_nm@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "font_btn_nm@2x.png"; sourceTree = "<group>"; };
 		FAE0A70C16F379F40016A6B7 /* camera_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_btn.png; sourceTree = "<group>"; };
@@ -270,7 +268,6 @@
 				FA620DF316EFA0BF00C49BC3 /* HorizontalList.h */,
 				FA620DF416EFA0BF00C49BC3 /* HorizontalList.m */,
 				FA620DFB16EFAEEB00C49BC3 /* main.plist */,
-				FAE0A6D816F26CDD0016A6B7 /* text_font.plist */,
 				FAB0049A16F0F6D4009C82BE /* text.plist */,
 				FA620DEE16EF9C7600C49BC3 /* MainCategoryItem.h */,
 				FAB004A416F11CF0009C82BE /* MainStoryboard_iPhone.storyboard */,
@@ -544,7 +541,6 @@
 				FA620DFC16EFAEEB00C49BC3 /* main.plist in Resources */,
 				FAB0049B16F0F6D4009C82BE /* text.plist in Resources */,
 				FAB004A516F11CF0009C82BE /* MainStoryboard_iPhone.storyboard in Resources */,
-				FAE0A6D916F26CDD0016A6B7 /* text_font.plist in Resources */,
 				FAE0A71516F379F40016A6B7 /* font_btn_nm.png in Resources */,
 				FAE0A71616F379F40016A6B7 /* font_btn_nm@2x.png in Resources */,
 				FAE0A71716F379F40016A6B7 /* camera_btn.png in Resources */,
@@ -729,6 +725,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7 armv7s i386";
 			};
 			name = Debug;
 		};
@@ -752,6 +749,7 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s i386";
 			};
 			name = Release;
 		};

@@ -11,6 +11,7 @@
 #import "HorizontalListDelegate.h"
 #import "Stack.h"
 
+
 @interface ViewController : UIViewController<HorizontalListDelegate, UIGestureRecognizerDelegate>{
     NSMutableArray *mainCategoryItems;
     NSMutableArray *textCategoryItems;
@@ -18,6 +19,26 @@
     NSMutableArray *textFontCategoryItems;
     UIView *instaTextView;
     Stack *botttomBar;
+    
+    BOOL isPanning;
+    NSInteger currentTouches;
+    CGPoint panTouch;
+    CGFloat scaleDistance;
+    UIView *currentDragView;
+    
+    UIView *topView;
+    UIView *bottomView;
+    UIView *leftView;
+    UIView *rightView;
+    
+    UIView *topLeftView;
+    UIView *topRightView;
+    UIView *bottomLeftView;
+    UIView *bottomRightView;
+    UIImageView *resizedImage;
+    UIImage *imageSelected;
 }
+@property (nonatomic, assign) CGRect crop;
+@property (nonatomic, strong) UIView *cropView;
 
 @end

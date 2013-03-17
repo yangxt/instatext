@@ -3,36 +3,28 @@
 <plist version="1.0">
 <array>
 	<dict>
-		<key>text</key>
-		<string>Font</string>
-		<key>image</key>
-		<string>fontselect_btn_n.png</string>
-		<key>plist</key>
-		<string>text_font</string>
+		<key>attribute</key>
+		<string>ATTR_TEXT</string>
+		<key>fontName</key>
+		<string>GOV.TTF</string>
 	</dict>
 	<dict>
-		<key>text</key>
-		<string>Color</string>
-		<key>image</key>
-		<string>fontcolor_btn_n.png</string>
-		<key>plist</key>
-		<string>text_color</string>
+		<key>fontName</key>
+		<string>Flixgirl.TTF</string>
+		<key>attribute</key>
+		<string>ATTR_TEXT</string>
 	</dict>
 	<dict>
-		<key>text</key>
-		<string>Layout</string>
-		<key>image</key>
-		<string>fontaligment_btn_n.png</string>
-		<key>plist</key>
-		<string>text_layout</string>
+		<key>fontName</key>
+		<string>GEEKB.TTF</string>
+		<key>attribute</key>
+		<string>ATTR_TEXT</string>
 	</dict>
 	<dict>
-		<key>text</key>
-		<string>Style</string>
-		<key>image</key>
-		<string>fontstyle_btn_n.png</string>
-		<key>plist</key>
-		<string>text_style</string>
+		<key>fontName</key>
+		<string>LOVERBOY.TTF</string>
+		<key>attribute</key>
+		<string>ATTR_TEXT</string>
 	</dict>
 </array>
 </plist>

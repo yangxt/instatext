@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>text</key>
+		<string>Font</string>
+		<key>image</key>
+		<string>fontselect_btn_n.png</string>
+		<key>plist</key>
+		<string>text_font</string>
+	</dict>
+	<dict>
+		<key>text</key>
+		<string>Color</string>
+		<key>image</key>
+		<string>fontcolor_btn_n.png</string>
+		<key>plist</key>
+		<string>text_color</string>
+	</dict>
+	<dict>
+		<key>text</key>
+		<string>Layout</string>
+		<key>image</key>
+		<string>fontaligment_btn_n.png</string>
+		<key>plist</key>
+		<string>text_layout</string>
+	</dict>
+	<dict>
+		<key>text</key>
+		<string>Style</string>
+		<key>image</key>
+		<string>fontstyle_btn_n.png</string>
+		<key>plist</key>
+		<string>text_style</string>
+	</dict>
+</array>
+</plist>

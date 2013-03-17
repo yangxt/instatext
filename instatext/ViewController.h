@@ -14,13 +14,17 @@
 
 @interface ViewController : UIViewController<HorizontalListDelegate, UIGestureRecognizerDelegate>{
     NSMutableArray *mainCategoryItems;
+    
     NSMutableArray *textCategoryItems;
-    NSMutableArray *stickerCategoryItems;
     NSMutableArray *imageCategoryItems;
+    NSMutableArray *stickerCategoryItems;
     NSMutableArray *borderCategoryItems;
     
+    NSMutableArray *fontCategoryItems;
     NSMutableArray *imageThemesCategoryItems;
     NSMutableArray *textFontCategoryItems;
+    
+    NSMutableArray *viewsinInstaView;
     
     UIImageView *instaTextView;
     UIImageView *borderView;

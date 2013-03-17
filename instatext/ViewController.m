@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "HorizontalList.h"
 #import "Constants.h"
+#import "FontCategoryItems.h"
 
 #define SCREEN_WDITH 320.0
 #define SCREEN_HEIGHT 460.0
@@ -42,24 +43,20 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     //Initialize the informtion to feed the control
-    mainCategoryItems = [self putItemsFrom:PLIST_ITEM_MAIN];
+    mainCategoryItems = [self putItemsFrom:PLIST_ITEM_MAIN itemType:@"MainCategoryItems"];
     
-    //Initialize the informtion to feed the control
-    textCategoryItems = [self putItemsFrom:PLIST_ITEM_TEXT];
+    textCategoryItems = [self putItemsFrom:PLIST_ITEM_TEXT itemType:@"MainCategoryItems"];
+    imageCategoryItems = [self putItemsFrom:PLIST_ITEM_IMAGE itemType:@"MainCategoryItems"];
     
-    //imageCategoryItem
-    imageCategoryItems = [self putItemsFrom:PLIST_ITEM_IMAGE];
-    
-    //stickerCategoryItems = [self putItemsFrom:PLIST_ITEM_FONT];
     stickerCategoryItems = [self putItemsFrom:@"" range:30 extension:@".png" attribute:ATTR_IMAGE];
-    
-    //borderCategoryItems
     borderCategoryItems = [self putItemsFrom:@"fme0" range:42 extension:@".png" attribute:ATTR_BORDER];
     
     // themes Category items
     imageThemesCategoryItems = [self putItemsFrom:@"p_" range:20 extension:@".jpg" attribute:ATTR_BG];
+    textFontCategoryItems = [self putItemsFrom:PLIST_ITEM_FONT itemType:@"FontCategoryItems"];
     
-
+    viewsinInstaView = [[NSMutableArray alloc] init];
+    
     NSLog(@"main category item count %d", [mainCategoryItems count]);
     botttomBar = [[Stack alloc] init];
     [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, SCREEN_HEIGHT - 72, 320.0, 72) items:mainCategoryItems numberOfRows:1]];
@@ -73,7 +70,7 @@
     [self.view addSubview:borderView];
     
     [self.view addSubview:instaTextView];
-    
+        
     UIView *bottomView = [botttomBar peekObject];
     [bottomView setBackgroundColor:[UIColor greenColor]];
     
@@ -94,6 +91,7 @@
     
 }
 
+// Used for items like borders, themes, stickers
 - (NSMutableArray *)putItemsFrom:(NSString *)startName range:(NSUInteger)range extension:(NSString *) extension attribute:(NSString *)attribute{
     NSUInteger index = 0;
     NSString *fileName = [[NSString alloc] init];
@@ -109,25 +107,40 @@
     return itemArray;
 }
 
-- (NSMutableArray *) putItemsFrom: (NSString *)fromPathFile{
+- (NSMutableArray *) putItemsFrom: (NSString *)fromPathFile itemType:(NSString *)itemType{
     NSString* plistPath = [[NSBundle mainBundle] pathForResource: fromPathFile
                                                           ofType: @"plist"];
     // Build the array from the plist
     NSMutableArray *items = [[NSMutableArray alloc] initWithContentsOfFile:plistPath];
     
-    NSMutableArray* containerArray = [[NSMutableArray alloc] init];
-    for(int i = 0; i < items.count; ++i) {
-        NSString *imageName = [items[i] objectForKey:@"image"];
-        NSString *textName = [items[i] objectForKey:@"text"];
-        NSString *pList = [items[i] objectForKey:@"plist"];
-        
-        NSLog(@"image %@", imageName);
-        NSLog(@"textName %@", textName);
-        
-        MainCategoryItem *item = [[MainCategoryItem alloc] initWithFrame:CGRectZero image:[UIImage imageNamed: imageName] text:textName pList:pList attribute:nil];
-        [containerArray addObject:item];
+    if([itemType isEqualToString:@"MainCategoryItems"]){
+        NSMutableArray* containerArray = [[NSMutableArray alloc] init];
+        for(int i = 0; i < items.count; ++i) {
+            NSString *imageName = [items[i] objectForKey:@"image"];
+            NSString *textName = [items[i] objectForKey:@"text"];
+            NSString *pList = [items[i] objectForKey:@"plist"];
+            
+            NSLog(@"image %@", imageName);
+            NSLog(@"textName %@", textName);
+            
+            MainCategoryItem *item = [[MainCategoryItem alloc] initWithFrame:CGRectZero image:[UIImage imageNamed: imageName] text:textName pList:pList attribute:nil];
+            [containerArray addObject:item];
+        }
+        return containerArray;
+    } else if([itemType isEqualToString:@"FontCategoryItems"]){
+        NSMutableArray* containerArray = [[NSMutableArray alloc] init];
+        for(int i = 0; i < items.count; ++i) {
+            NSString *attribute = [items[i] objectForKey:@"attribute"];
+            NSString *fontName = [items[i] objectForKey:@"fontName"];
+            
+            FontCategoryItems *item = [[FontCategoryItems alloc] initWithFrame:CGRectZero fontName:fontName attribute:attribute];
+            [containerArray addObject:item];
+        }
+        return containerArray;
+    } else{
+        return nil;
     }
-    return containerArray;
+
 }
 
 
@@ -246,6 +259,8 @@
                 topRightView = [self newCornerView];
                 bottomLeftView = [self newCornerView];
                 bottomRightView = [self newCornerView];
+                // Adding currently added view in views in InstaView array
+                [viewsinInstaView addObject:itemInstance];
                 self.cropView = itemInstance;
                 [instaTextView addSubview:itemInstance];
             }
@@ -297,6 +312,25 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self willChangeValueForKey:@"crop"];
     NSSet *allTouches = [event allTouches];
+    NSUInteger pointIn = 0;
+    NSLog(@"touches start");
+    for (UIView *view in viewsinInstaView) {
+        CGPoint touch = [[allTouches anyObject] locationInView:instaTextView];
+        NSLog(@"view x -> %f y -> %f width -> %f height %f", view.frame.origin.x, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
+        if (CGRectContainsPoint(view.frame, touch )) {
+            NSLog(@"yeah point contained in a view");
+            self.cropView = view;
+            // Ensuring the currently selected view is brought to front. Taking care of overlapping view case
+            [instaTextView bringSubviewToFront:self.cropView];
+            [viewsinInstaView removeObject:self.cropView];
+            [viewsinInstaView insertObject:self.cropView atIndex:0];
+            pointIn = 1;
+            break;
+        }
+    }
+    if (pointIn == 0) {
+        self.cropView = nil;
+    }
     
     switch ([allTouches count]) {
         case 1: {
@@ -424,6 +458,7 @@
                 panTouch = touchCurrent;
             }
             else if ((CGRectContainsPoint(instaTextView.bounds, touch))) {
+
                 CGRect frame = self.cropView.frame;
                 CGFloat x = touch.x;
                 CGFloat y = touch.y;
@@ -502,6 +537,8 @@
                      currentDragView == bottomLeftView ||
                      currentDragView == bottomRightView
                      ) {
+                NSLog(@"happening outside the currentlya added view");
+                
                 CGFloat x = MIN(touch1.x, touch2.x);
                 CGFloat y = MIN(touch1.y, touch2.y);
                 
@@ -514,6 +551,8 @@
                      currentDragView == topView ||
                      currentDragView == bottomView
                      ) {
+                NSLog(@"happening outside the currentlya added view 2");
+
                 CGFloat y = MIN(touch1.y, touch2.y);
                 CGFloat height = MAX(touch1.y, touch2.y) - y;
                 
@@ -528,6 +567,8 @@
                      currentDragView == leftView ||
                      currentDragView == rightView
                      ) {
+                NSLog(@"happening outside the currentlya added view 3");
+
                 CGFloat x = MIN(touch1.x, touch2.x);
                 CGFloat width = MAX(touch1.x, touch2.x) - x;
                 

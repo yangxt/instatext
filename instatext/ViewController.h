@@ -16,8 +16,15 @@
     NSMutableArray *mainCategoryItems;
     NSMutableArray *textCategoryItems;
     NSMutableArray *stickerCategoryItems;
+    NSMutableArray *imageCategoryItems;
+    NSMutableArray *borderCategoryItems;
+    
+    NSMutableArray *imageThemesCategoryItems;
     NSMutableArray *textFontCategoryItems;
-    UIView *instaTextView;
+    
+    UIImageView *instaTextView;
+    UIImageView *borderView;
+    
     Stack *botttomBar;
     
     BOOL isPanning;
@@ -35,7 +42,6 @@
     UIView *topRightView;
     UIView *bottomLeftView;
     UIView *bottomRightView;
-    UIImageView *resizedImage;
     UIImage *imageSelected;
 }
 @property (nonatomic, assign) CGRect crop;

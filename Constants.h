@@ -29,3 +29,8 @@
 #define PLIST_SUBITEM_THEMES @"themes_subitems"
 #define PLIST_SUBITEM_LIBRARY @"library_subitems"
 #define PLIST_SUBITEM_EFFECTS @"effects_subitems"
+
+#define ATTR_BG @"attr_background"
+#define ATTR_IMAGE @"attr_image"
+#define ATTR_BORDER @"attr_border"
+#define ATTR_TEXT @"attr_text"

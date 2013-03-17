@@ -17,6 +17,7 @@
 @property(nonatomic, retain) NSString *imageTitle;
 @property(nonatomic, retain) UIImage *image;
 @property(nonatomic, retain) NSString *pList;
+@property(nonatomic, retain) NSString *attribute;
 
-- (id) initWithFrame:(CGRect)frame  image:(UIImage *)image text:(NSString *)imageTitle pList:(NSString *)pList;
+- (id) initWithFrame:(CGRect)frame  image:(UIImage *)image text:(NSString *)imageTitle pList:(NSString *)pList attribute:(NSString *)attribute;
 @end

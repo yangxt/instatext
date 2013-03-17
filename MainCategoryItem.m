@@ -10,7 +10,7 @@
 
 @implementation MainCategoryItem
 
-- (id)initWithFrame:(CGRect)frame image:(UIImage *)image text:(NSString *)imageTitle pList:(NSString *)pList
+- (id)initWithFrame:(CGRect)frame image:(UIImage *)image text:(NSString *)imageTitle pList:(NSString *)pList attribute:(NSString *)attribute
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -19,6 +19,7 @@
         self.image = image;
         self.imageTitle = imageTitle;
         self.pList = pList;
+        self.attribute = attribute;
         
         UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
         /**

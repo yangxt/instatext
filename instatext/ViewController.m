@@ -47,16 +47,30 @@
     //Initialize the informtion to feed the control
     textCategoryItems = [self putItemsFrom:PLIST_ITEM_TEXT];
     
-    //textFontCategoryItems = [self putItemsFrom:PLIST_ITEM_FONT];
-    stickerCategoryItems = [self putItemsFrom:@"" range:30 extension:@".png"];
+    //imageCategoryItem
+    imageCategoryItems = [self putItemsFrom:PLIST_ITEM_IMAGE];
     
+    //stickerCategoryItems = [self putItemsFrom:PLIST_ITEM_FONT];
+    stickerCategoryItems = [self putItemsFrom:@"" range:30 extension:@".png" attribute:ATTR_IMAGE];
+    
+    //borderCategoryItems
+    borderCategoryItems = [self putItemsFrom:@"fme0" range:42 extension:@".png" attribute:ATTR_BORDER];
+    
+    // themes Category items
+    imageThemesCategoryItems = [self putItemsFrom:@"p_" range:20 extension:@".jpg" attribute:ATTR_BG];
+    
+
     NSLog(@"main category item count %d", [mainCategoryItems count]);
     botttomBar = [[Stack alloc] init];
     [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, SCREEN_HEIGHT - 72, 320.0, 72) items:mainCategoryItems numberOfRows:1]];
     [[botttomBar peekObject] setDelegate:self];
     
-    instaTextView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 300)];
+    instaTextView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 40, 280, 300)];
     [instaTextView setBackgroundColor:[UIColor redColor]];
+    
+    // Adding border view as the first view so that it remains to be at the back
+    borderView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 380)];
+    [self.view addSubview:borderView];
     
     [self.view addSubview:instaTextView];
     
@@ -80,7 +94,7 @@
     
 }
 
-- (NSMutableArray *)putItemsFrom:(NSString *)startName range:(NSUInteger)range extension:(NSString *) extension{
+- (NSMutableArray *)putItemsFrom:(NSString *)startName range:(NSUInteger)range extension:(NSString *) extension attribute:(NSString *)attribute{
     NSUInteger index = 0;
     NSString *fileName = [[NSString alloc] init];
     NSMutableArray *itemArray = [[NSMutableArray alloc] init];
@@ -88,7 +102,7 @@
     for (index = 0; index < range; index++) {
         fileName = [startName stringByAppendingString:[NSString stringWithFormat:@"%d",index]];
         fileName = [fileName stringByAppendingString:extension];
-        MainCategoryItem *item = [[MainCategoryItem alloc] initWithFrame:CGRectZero image:[UIImage imageNamed: fileName] text:fileName pList:nil];
+        MainCategoryItem *item = [[MainCategoryItem alloc] initWithFrame:CGRectZero image:[UIImage imageNamed: fileName] text:fileName pList:nil attribute:attribute];
         [itemArray addObject:item];
         NSLog(@"file name %@", fileName);
     }
@@ -110,7 +124,7 @@
         NSLog(@"image %@", imageName);
         NSLog(@"textName %@", textName);
         
-        MainCategoryItem *item = [[MainCategoryItem alloc] initWithFrame:CGRectZero image:[UIImage imageNamed: imageName] text:textName pList:pList];
+        MainCategoryItem *item = [[MainCategoryItem alloc] initWithFrame:CGRectZero image:[UIImage imageNamed: imageName] text:textName pList:pList attribute:nil];
         [containerArray addObject:item];
     }
     return containerArray;
@@ -141,7 +155,7 @@
         
         MainCategoryItem* item = (MainCategoryItem *)object;
         
-        if (item.pList != nil) {
+        if (item.attribute == nil) {
             
             [self moveTo:CGPointMake(0, SCREEN_HEIGHT) duration:1.0 option:UIViewAnimationOptionCurveEaseIn horizontalList:[botttomBar peekObject]];
             
@@ -153,14 +167,13 @@
                 
             } else if ([item.pList isEqualToString:PLIST_ITEM_IMAGE]) {
                 
-                [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, SCREEN_HEIGHT , 320.0, 144.0) items:textCategoryItems numberOfRows:2]];
+                [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, SCREEN_HEIGHT , 320.0, 72.0) items:imageCategoryItems numberOfRows:1]];
                 
             } else if ([item.pList isEqualToString:PLIST_ITEM_STICKERS]){
                 [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, SCREEN_HEIGHT , 320.0, 144.0) items:stickerCategoryItems numberOfRows:2]];
                 
             } else if ([item.pList isEqualToString:PLIST_ITEM_BORDERS]){
-                  // TO DO:
-                
+                [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, SCREEN_HEIGHT , 320.0, 144.0) items:borderCategoryItems numberOfRows:2]];
             }
             
             // Text Category
@@ -182,7 +195,8 @@
             } else if ([item.pList isEqualToString:PLIST_ITEM_CAMERA]){
                 
             } else if ([item.pList isEqualToString:PLIST_ITEM_THEMES]){
-                
+                NSLog(@"themes category clicked");
+                [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, SCREEN_HEIGHT , 320.0, 144.0) items:imageThemesCategoryItems numberOfRows:2]];
             } else if ([item.pList isEqualToString:PLIST_ITEM_EFFECTS]){
                 
             }
@@ -203,30 +217,39 @@
             }
             
         } else {
-            [self.view setUserInteractionEnabled:YES];
-            NSLog(@"item plist is null Lets start the magic :) Booyeah !");
-            UIImageView *itemInstance = [[UIImageView alloc] initWithImage:item.image];
-            NSLog(@"frame dimension %f", itemInstance.frame.size.width);
-            [itemInstance setFrame:CGRectMake(40, 40, 140, 140)];
-            [itemInstance setUserInteractionEnabled:YES];
-            [itemInstance.layer setBorderColor: [[UIColor blueColor] CGColor]];
-            [itemInstance.layer setBorderWidth: 2.0];
-        
-            [itemInstance setUserInteractionEnabled:YES];
-            itemInstance.contentMode = UIViewContentModeScaleAspectFill;
-            imageSelected = item.image;
             
-            
-            topView = [self newEdgeView];
-            bottomView = [self newEdgeView];
-            leftView = [self newEdgeView];
-            rightView = [self newEdgeView];
-            topLeftView = [self newCornerView];
-            topRightView = [self newCornerView];
-            bottomLeftView = [self newCornerView];
-            bottomRightView = [self newCornerView];
-            self.cropView = itemInstance;
-            [instaTextView addSubview:itemInstance];
+            if ([item.attribute isEqualToString:ATTR_BG]){
+                instaTextView.image = item.image;
+            } else if([item.attribute isEqualToString:ATTR_BORDER]){
+                borderView.image = item.image;
+            } else{
+                
+                [self.view setUserInteractionEnabled:YES];
+                NSLog(@"item plist is null Lets start the magic :) Booyeah !");
+                UIImageView *itemInstance = [[UIImageView alloc] initWithImage:item.image];
+                NSLog(@"frame dimension %f", itemInstance.frame.size.width);
+                [itemInstance setFrame:CGRectMake(40, 40, 140, 140)];
+                [itemInstance setUserInteractionEnabled:YES];
+                [itemInstance.layer setBorderColor: [[UIColor blueColor] CGColor]];
+                [itemInstance.layer setBorderWidth: 2.0];
+                
+                [itemInstance setUserInteractionEnabled:YES];
+                itemInstance.contentMode = UIViewContentModeScaleAspectFill;
+                imageSelected = item.image;
+                
+                
+                topView = [self newEdgeView];
+                bottomView = [self newEdgeView];
+                leftView = [self newEdgeView];
+                rightView = [self newEdgeView];
+                topLeftView = [self newCornerView];
+                topRightView = [self newCornerView];
+                bottomLeftView = [self newCornerView];
+                bottomRightView = [self newCornerView];
+                self.cropView = itemInstance;
+                [instaTextView addSubview:itemInstance];
+            }
+
         }
     }
 }

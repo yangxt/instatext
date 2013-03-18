@@ -12,7 +12,7 @@
 #import "Stack.h"
 
 
-@interface ViewController : UIViewController<HorizontalListDelegate, UIGestureRecognizerDelegate>{
+@interface ViewController : UIViewController<HorizontalListDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>{
     NSMutableArray *mainCategoryItems;
     
     NSMutableArray *textCategoryItems;
@@ -20,14 +20,21 @@
     NSMutableArray *stickerCategoryItems;
     NSMutableArray *borderCategoryItems;
     
-    NSMutableArray *fontCategoryItems;
+    NSMutableArray *textColorCategoryItems;
     NSMutableArray *imageThemesCategoryItems;
     NSMutableArray *textFontCategoryItems;
     
     NSMutableArray *viewsinInstaView;
-    
+    UITextView *textView;
     UIImageView *instaTextView;
     UIImageView *borderView;
+    
+    double lastArea;
+    double currentArea;
+    double lastFontSize;
+    
+    //ImagePickerController
+    UIImagePickerController *picker;
     
     Stack *botttomBar;
     
@@ -46,7 +53,6 @@
     UIView *topRightView;
     UIView *bottomLeftView;
     UIView *bottomRightView;
-    UIImage *imageSelected;
 }
 @property (nonatomic, assign) CGRect crop;
 @property (nonatomic, strong) UIView *cropView;

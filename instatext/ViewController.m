@@ -10,6 +10,7 @@
 #import "HorizontalList.h"
 #import "Constants.h"
 #import "FontCategoryItems.h"
+#import "ColorCategoryItems.h"
 
 #define SCREEN_WDITH 320.0
 #define SCREEN_HEIGHT 460.0
@@ -33,8 +34,9 @@
 #define CGOriginY(rect)                 rect.origin.y
 #endif
 
+#define DIST_ONE_ROW 162
+#define DIST_TWO_ROW 234
 @implementation ViewController
-
 
 
 - (void)viewDidLoad
@@ -47,23 +49,44 @@
     
     textCategoryItems = [self putItemsFrom:PLIST_ITEM_TEXT itemType:@"MainCategoryItems"];
     imageCategoryItems = [self putItemsFrom:PLIST_ITEM_IMAGE itemType:@"MainCategoryItems"];
-    
     stickerCategoryItems = [self putItemsFrom:@"" range:30 extension:@".png" attribute:ATTR_IMAGE];
     borderCategoryItems = [self putItemsFrom:@"fme0" range:42 extension:@".png" attribute:ATTR_BORDER];
     
     // themes Category items
     imageThemesCategoryItems = [self putItemsFrom:@"p_" range:20 extension:@".jpg" attribute:ATTR_BG];
     textFontCategoryItems = [self putItemsFrom:PLIST_ITEM_FONT itemType:@"FontCategoryItems"];
+    textColorCategoryItems = [self putItemsFrom:PLIST_ITEM_COLOR itemType:@"ColorCategoryItems"];
     
     viewsinInstaView = [[NSMutableArray alloc] init];
+
+    textView = [[UITextView alloc] initWithFrame:CGRectMake(50, 50, 100, 50)];
+    textView.font = [UIFont fontWithName:[(FontCategoryItems *)[textFontCategoryItems objectAtIndex:0] fontName] size:16];
+    textView.contentMode = UIViewContentModeScaleAspectFill;
+    [textView setUserInteractionEnabled:YES];
+    
+    textView.text = @"InstaText";
+    lastFontSize = 16;
+    
+    
+    topView = [self newEdgeView];
+    bottomView = [self newEdgeView];
+    leftView = [self newEdgeView];
+    rightView = [self newEdgeView];
+    topLeftView = [self newCornerView];
+    topRightView = [self newCornerView];
+    bottomLeftView = [self newCornerView];
+    bottomRightView = [self newCornerView];
+  
     
     NSLog(@"main category item count %d", [mainCategoryItems count]);
     botttomBar = [[Stack alloc] init];
-    [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, SCREEN_HEIGHT - 72, 320.0, 72) items:mainCategoryItems numberOfRows:1]];
+    [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, SCREEN_HEIGHT - DIST_ONE_ROW, 320.0, DIST_ONE_ROW) items:mainCategoryItems numberOfRows:1]];
     [[botttomBar peekObject] setDelegate:self];
     
     instaTextView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 40, 280, 300)];
     [instaTextView setBackgroundColor:[UIColor redColor]];
+    [instaTextView addSubview:textView];
+    [viewsinInstaView addObject:textView];
     
     // Adding border view as the first view so that it remains to be at the back
     borderView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 380)];
@@ -137,7 +160,16 @@
             [containerArray addObject:item];
         }
         return containerArray;
-    } else{
+    } else if([itemType isEqualToString:@"ColorCategoryItems"]){
+        NSMutableArray* containerArray = [[NSMutableArray alloc] init];
+        for(int i = 0; i < items.count; ++i) {
+            NSString *attribute = [items[i] objectForKey:@"attribute"];
+            NSString *color = [items[i] objectForKey:@"fontColor"];
+            ColorCategoryItems *item = [[ColorCategoryItems alloc] initWithFrame:CGRectZero color:color attribute:attribute];
+            [containerArray addObject:item];
+        }
+        return containerArray;
+    } else {
         return nil;
     }
 
@@ -163,39 +195,38 @@
 #pragma mark HorizontalListDelegate
 
 - (void) didSelectItem:(id)object {
-
-    if ([object isKindOfClass:[MainCategoryItem class]]) {
+ 
+        //MainCategoryItem* item = (MainCategoryItem *)object;
         
-        MainCategoryItem* item = (MainCategoryItem *)object;
-        
-        if (item.attribute == nil) {
-            
+        if (((MainCategoryItem *)object).attribute == nil) {
+            MainCategoryItem* item = (MainCategoryItem *)object;     
             [self moveTo:CGPointMake(0, SCREEN_HEIGHT) duration:1.0 option:UIViewAnimationOptionCurveEaseIn horizontalList:[botttomBar peekObject]];
             
             // Main Category Items
             if ([item.pList isEqualToString: PLIST_ITEM_TEXT]) {
                 
-                [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, SCREEN_HEIGHT , 320.0, 72.0) items:textCategoryItems numberOfRows:1]];
+                [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, SCREEN_HEIGHT , 320.0, DIST_ONE_ROW) items:textCategoryItems numberOfRows:1]];
                 
                 
             } else if ([item.pList isEqualToString:PLIST_ITEM_IMAGE]) {
                 
-                [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, SCREEN_HEIGHT , 320.0, 72.0) items:imageCategoryItems numberOfRows:1]];
+                [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, SCREEN_HEIGHT , 320.0, DIST_ONE_ROW) items:imageCategoryItems numberOfRows:1]];
                 
             } else if ([item.pList isEqualToString:PLIST_ITEM_STICKERS]){
-                [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, SCREEN_HEIGHT , 320.0, 144.0) items:stickerCategoryItems numberOfRows:2]];
+                [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, SCREEN_HEIGHT , 320.0, DIST_TWO_ROW) items:stickerCategoryItems numberOfRows:2]];
                 
             } else if ([item.pList isEqualToString:PLIST_ITEM_BORDERS]){
-                [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, SCREEN_HEIGHT , 320.0, 144.0) items:borderCategoryItems numberOfRows:2]];
+                [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, SCREEN_HEIGHT , 320.0, DIST_TWO_ROW) items:borderCategoryItems numberOfRows:2]];
             }
             
             // Text Category
             else if ([item.pList isEqualToString:PLIST_ITEM_FONT]) {
                 
-                [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, SCREEN_HEIGHT , 320.0, 144.0) items:textFontCategoryItems numberOfRows:2]];
+                [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, SCREEN_HEIGHT , 320.0, DIST_TWO_ROW) items:textFontCategoryItems numberOfRows:2]];
                 
             } else if ([item.pList isEqualToString:PLIST_ITEM_COLOR]) {
-                // TO DO:
+                [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, SCREEN_HEIGHT , 320.0, DIST_TWO_ROW) items:textColorCategoryItems numberOfRows:2]];
+                
             } else if ([item.pList isEqualToString:PLIST_ITEM_LAYOUT]) {
                 // TO DO:
             } else if ([item.pList isEqualToString:PLIST_ITEM_STYLE]) {
@@ -205,11 +236,25 @@
             // Image Category
             else if ([item.pList isEqualToString:PLIST_ITEM_LIBRARY]){
                 
+                picker = [[UIImagePickerController alloc] init];
+                picker.allowsEditing = YES;
+                // Setting delegate of UIImagePickerController as self. We need control once the image has been selected
+                picker.delegate = self;
+                picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+                [self presentModalViewController:picker animated:YES];
+                
             } else if ([item.pList isEqualToString:PLIST_ITEM_CAMERA]){
+                
+                picker = [[UIImagePickerController alloc] init];
+                picker.allowsEditing = YES;
+                // Setting delegate of UIImagePickerController as self. We need control once the image has been selected
+                picker.delegate = self;
+                picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+                [self presentModalViewController:picker animated:YES];
                 
             } else if ([item.pList isEqualToString:PLIST_ITEM_THEMES]){
                 NSLog(@"themes category clicked");
-                [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, SCREEN_HEIGHT , 320.0, 144.0) items:imageThemesCategoryItems numberOfRows:2]];
+                [botttomBar pushObject:[[HorizontalList alloc] initWithFrame:CGRectMake(0.0, SCREEN_HEIGHT , 320.0, DIST_TWO_ROW) items:imageThemesCategoryItems numberOfRows:2]];
             } else if ([item.pList isEqualToString:PLIST_ITEM_EFFECTS]){
                 
             }
@@ -222,21 +267,35 @@
             [self.view addSubview:[botttomBar peekObject]];
             
             if (((HorizontalList *)[botttomBar peekObject]).rows == 1) {
-                [self moveTo:CGPointMake(0, SCREEN_HEIGHT - 144 ) duration:1.0 option:UIViewAnimationOptionCurveEaseIn horizontalList:[botttomBar peekObject]];
+                [self moveTo:CGPointMake(0, SCREEN_HEIGHT - 2 * DIST_ONE_ROW ) duration:1.0 option:UIViewAnimationOptionCurveEaseIn horizontalList:[botttomBar peekObject]];
             } else if(((HorizontalList *)[botttomBar peekObject]).rows == 2) {
-                [self moveTo:CGPointMake(0, SCREEN_HEIGHT - 288 ) duration:1.0 option:UIViewAnimationOptionCurveEaseIn horizontalList:[botttomBar peekObject]];
+                [self moveTo:CGPointMake(0, SCREEN_HEIGHT - 2 * DIST_TWO_ROW ) duration:1.0 option:UIViewAnimationOptionCurveEaseIn horizontalList:[botttomBar peekObject]];
             } else{
                 
             }
             
         } else {
             
-            if ([item.attribute isEqualToString:ATTR_BG]){
+            if ([((MainCategoryItem *)object).attribute isEqualToString:ATTR_BG]){
+                MainCategoryItem* item = (MainCategoryItem *)object;
                 instaTextView.image = item.image;
-            } else if([item.attribute isEqualToString:ATTR_BORDER]){
+            } else if([((MainCategoryItem *)object).attribute isEqualToString:ATTR_BORDER]){
+                MainCategoryItem* item = (MainCategoryItem *)object;
                 borderView.image = item.image;
+            } else if([((MainCategoryItem *)object).attribute isEqualToString:ATTR_FONT]){
+                FontCategoryItems* item = (FontCategoryItems *)object;
+                [self.view setUserInteractionEnabled:YES];
+                [textView setFont:[UIFont fontWithName:item.fontName size:14]];
+                [textView setText:textView.text];
+                self.cropView = textView;
+            } else if([((MainCategoryItem *)object).attribute isEqualToString:ATTR_COLOR]){
+                ColorCategoryItems* item = (ColorCategoryItems *)object;
+                [self.view setUserInteractionEnabled:YES];
+                [textView setTextColor:item.color];
+                [textView setText:textView.text];
+                self.cropView = textView;
             } else{
-                
+                MainCategoryItem* item = (MainCategoryItem *)object;                
                 [self.view setUserInteractionEnabled:YES];
                 NSLog(@"item plist is null Lets start the magic :) Booyeah !");
                 UIImageView *itemInstance = [[UIImageView alloc] initWithImage:item.image];
@@ -247,9 +306,7 @@
                 [itemInstance.layer setBorderWidth: 2.0];
                 
                 [itemInstance setUserInteractionEnabled:YES];
-                itemInstance.contentMode = UIViewContentModeScaleAspectFill;
-                imageSelected = item.image;
-                
+                itemInstance.contentMode = UIViewContentModeScaleAspectFill;                
                 
                 topView = [self newEdgeView];
                 bottomView = [self newEdgeView];
@@ -266,9 +323,15 @@
             }
 
         }
-    }
+    
 }
 
+#pragma UIImagePickerController Delegate
+
+- (void)imagePickerController:(UIImagePickerController *)mypicker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+	[mypicker dismissModalViewControllerAnimated:YES];
+	instaTextView.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+}
 
 
 - (void)didPressBackButton:(id)sender {
@@ -277,10 +340,10 @@
     NSLog(@"number of rows %d", ((HorizontalList *)[botttomBar peekObject]).rows);
     if (((HorizontalList *)[botttomBar peekObject]).rows == 1) {
         NSLog(@"yya");
-        [self moveTo:CGPointMake(0, SCREEN_HEIGHT - 142 ) duration:1.0 option:UIViewAnimationOptionCurveEaseIn horizontalList:[botttomBar peekObject]];
+        [self moveTo:CGPointMake(0, SCREEN_HEIGHT - DIST_ONE_ROW * 2 ) duration:1.0 option:UIViewAnimationOptionCurveEaseIn horizontalList:[botttomBar peekObject]];
     } else if(((HorizontalList *)[botttomBar peekObject]).rows == 2) {
         NSLog(@"bbba");
-        [self moveTo:CGPointMake(0, SCREEN_HEIGHT - 304 ) duration:1.0 option:UIViewAnimationOptionCurveEaseIn horizontalList:[botttomBar peekObject]];
+        [self moveTo:CGPointMake(0, SCREEN_HEIGHT - DIST_TWO_ROW * 2 ) duration:1.0 option:UIViewAnimationOptionCurveEaseIn horizontalList:[botttomBar peekObject]];
     } else{
         NSLog(@"shit happened");
     }
@@ -324,6 +387,10 @@
             [instaTextView bringSubviewToFront:self.cropView];
             [viewsinInstaView removeObject:self.cropView];
             [viewsinInstaView insertObject:self.cropView atIndex:0];
+            
+            // Getting original area
+            lastArea = view.frame.size.width * view.frame.size.height;
+            
             pointIn = 1;
             break;
         }
@@ -418,7 +485,11 @@
                     frame.size.width = x - CGOriginX(frame);
                 }
             }
+            else{
+                
+            }
             
+                 
             self.cropView.frame = frame;
             
             [self updateBounds];
@@ -503,6 +574,16 @@
                 else if ( currentDragView == bottomRightView) {
                     frame.size.width = x - CGOriginX(frame);
                     frame.size.height = y - CGOriginY(frame);
+                }
+                
+                if ([self.cropView isKindOfClass:[textView class]]) {
+                    currentArea = frame.size.width * frame.size.height;
+                    
+                    NSLog(@"Ohkay so we have text view with us");
+                    double size =  lastFontSize * currentArea/ lastArea;
+                    lastArea = currentArea;
+                    lastFontSize = size;
+                    [textView setFont:[UIFont fontWithName:textView.font.fontName size: size]];
                 }
                 
                 self.cropView.frame = frame;

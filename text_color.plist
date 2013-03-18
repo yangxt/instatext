@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>attribute</key>
+		<string>attr_font</string>
+		<key>fontName</key>
+		<string>GOV.TTF</string>
+	</dict>
+	<dict>
+		<key>fontName</key>
+		<string>Flixgirl.TTF</string>
+		<key>attribute</key>
+		<string>attr_font</string>
+	</dict>
+	<dict>
+		<key>fontName</key>
+		<string>GEEKB.TTF</string>
+		<key>attribute</key>
+		<string>attr_font</string>
+	</dict>
+	<dict>
+		<key>fontName</key>
+		<string>LOVERBOY.TTF</string>
+		<key>attribute</key>
+		<string>attr_font</string>
+	</dict>
+</array>
+</plist>

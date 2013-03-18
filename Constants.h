@@ -33,4 +33,5 @@
 #define ATTR_BG @"attr_background"
 #define ATTR_IMAGE @"attr_image"
 #define ATTR_BORDER @"attr_border"
-#define ATTR_TEXT @"attr_text"
+#define ATTR_FONT @"attr_font"
+#define ATTR_COLOR @"attr_color"

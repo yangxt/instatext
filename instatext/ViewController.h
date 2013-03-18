@@ -10,6 +10,7 @@
 #import "HorizontalList.h"
 #import "HorizontalListDelegate.h"
 #import "Stack.h"
+#import <AssetsLibrary/AssetsLibrary.h>
 
 
 @interface ViewController : UIViewController<HorizontalListDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>{
@@ -56,5 +57,6 @@
 }
 @property (nonatomic, assign) CGRect crop;
 @property (nonatomic, strong) UIView *cropView;
+@property (strong, atomic) ALAssetsLibrary *library;
 
 @end

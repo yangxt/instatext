@@ -26,6 +26,9 @@
 		FA620DF216EF9CAC00C49BC3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA620DF116EF9CAC00C49BC3 /* QuartzCore.framework */; };
 		FA620DF516EFA0BF00C49BC3 /* HorizontalList.m in Sources */ = {isa = PBXBuildFile; fileRef = FA620DF416EFA0BF00C49BC3 /* HorizontalList.m */; };
 		FA620DFC16EFAEEB00C49BC3 /* main.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA620DFB16EFAEEB00C49BC3 /* main.plist */; };
+		FAA5238216F7777C007FB686 /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA5238116F7777C007FB686 /* ALAssetsLibrary+CustomPhotoAlbum.m */; };
+		FAA5238316F77818007FB686 /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA5238116F7777C007FB686 /* ALAssetsLibrary+CustomPhotoAlbum.m */; };
+		FAA5238516F77846007FB686 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA5238416F77846007FB686 /* AssetsLibrary.framework */; };
 		FAA5D7A216F762200026826D /* felt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAE0A96C16F5E6390016A6B7 /* felt.ttf */; };
 		FAA5D7A316F762200026826D /* Filxgirl.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAE0A96D16F5E6390016A6B7 /* Filxgirl.ttf */; };
 		FAA5D7A416F762200026826D /* GEEKB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAE0A96E16F5E6390016A6B7 /* GEEKB.ttf */; };
@@ -408,6 +411,9 @@
 		FA620DF416EFA0BF00C49BC3 /* HorizontalList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizontalList.m; sourceTree = "<group>"; };
 		FA620DFA16EFA8BD00C49BC3 /* HorizontalListDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HorizontalListDelegate.h; sourceTree = "<group>"; };
 		FA620DFB16EFAEEB00C49BC3 /* main.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = main.plist; sourceTree = "<group>"; };
+		FAA5238016F7777C007FB686 /* ALAssetsLibrary+CustomPhotoAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAssetsLibrary+CustomPhotoAlbum.h"; sourceTree = "<group>"; };
+		FAA5238116F7777C007FB686 /* ALAssetsLibrary+CustomPhotoAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAssetsLibrary+CustomPhotoAlbum.m"; sourceTree = "<group>"; };
+		FAA5238416F77846007FB686 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		FAB0049A16F0F6D4009C82BE /* text.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.plist; sourceTree = "<group>"; };
 		FAB004A016F109F9009C82BE /* Stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stack.h; sourceTree = "<group>"; };
 		FAB004A116F109F9009C82BE /* Stack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stack.m; sourceTree = "<group>"; };
@@ -757,6 +763,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAA5238516F77846007FB686 /* AssetsLibrary.framework in Frameworks */,
 				FA620DF216EF9CAC00C49BC3 /* QuartzCore.framework in Frameworks */,
 				FA620DAE16EF880400C49BC3 /* UIKit.framework in Frameworks */,
 				FA620DB016EF880400C49BC3 /* Foundation.framework in Frameworks */,
@@ -780,6 +787,7 @@
 		FA620D9E16EF880400C49BC3 = {
 			isa = PBXGroup;
 			children = (
+				FAA5238416F77846007FB686 /* AssetsLibrary.framework */,
 				FAE0AAFD16F61E590016A6B7 /* ColorCategoryItems.h */,
 				FAE0AAFE16F61E5A0016A6B7 /* ColorCategoryItems.m */,
 				FAE0A9C516F5E7D50016A6B7 /* static */,
@@ -834,6 +842,8 @@
 				FA620DBC16EF880400C49BC3 /* AppDelegate.h */,
 				FA620DBD16EF880400C49BC3 /* AppDelegate.m */,
 				FA620DCB16EF880400C49BC3 /* ViewController.h */,
+				FAA5238016F7777C007FB686 /* ALAssetsLibrary+CustomPhotoAlbum.h */,
+				FAA5238116F7777C007FB686 /* ALAssetsLibrary+CustomPhotoAlbum.m */,
 				FA620DCC16EF880400C49BC3 /* ViewController.m */,
 				FA620DB416EF880400C49BC3 /* Supporting Files */,
 			);
@@ -1730,6 +1740,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAA5238316F77818007FB686 /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
 				FA620DBA16EF880400C49BC3 /* main.m in Sources */,
 				FA620DBE16EF880400C49BC3 /* AppDelegate.m in Sources */,
 				FA620DCD16EF880400C49BC3 /* ViewController.m in Sources */,
@@ -1746,6 +1757,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA620DE216EF880400C49BC3 /* instatextTests.m in Sources */,
+				FAA5238216F7777C007FB686 /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,9 +19,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="848-be-3rM">
-                        <barButtonItem key="rightBarButtonItem" title="Show/Hide" id="DmM-WU-cwe">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="DmM-WU-cwe">
                             <connections>
-                                <action selector="didPressBackButton:" destination="2" id="26y-eR-QCd"/>
+                                <action selector="savePicture:" destination="2" id="t7y-Ls-6RB"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -49,11 +49,6 @@
             <point key="canvasLocation" x="297" y="-285"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

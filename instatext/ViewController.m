@@ -11,6 +11,8 @@
 #import "Constants.h"
 #import "FontCategoryItems.h"
 #import "ColorCategoryItems.h"
+#import "ALAssetsLibrary+CustomPhotoAlbum.h"
+
 
 #define SCREEN_WDITH 320.0
 #define SCREEN_HEIGHT 460.0
@@ -77,6 +79,7 @@
     bottomLeftView = [self newCornerView];
     bottomRightView = [self newCornerView];
   
+    self.library = [[ALAssetsLibrary alloc] init];
     
     NSLog(@"main category item count %d", [mainCategoryItems count]);
     botttomBar = [[Stack alloc] init];
@@ -793,6 +796,28 @@
     } while (change);
     
     self.cropView.frame = frame;
+}
+
+//taking screenshot of the screen so to share on various social networks
+
+- (IBAction)savePicture:(id)sender {
+    NSLog(@"Save picture button triggered");
+    if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)])
+        UIGraphicsBeginImageContextWithOptions(instaTextView.bounds.size, NO, [UIScreen mainScreen].scale);
+    else
+        UIGraphicsBeginImageContext(instaTextView.bounds.size);
+    [instaTextView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    NSData * data = UIImagePNGRepresentation(image);
+    [data writeToFile:@"foo.png" atomically:YES];
+    
+    [self.library saveImage:image toAlbum:@"InstaText" withCompletionBlock:^(NSError *error) {
+        if (error!=nil) {
+            NSLog(@"Big error: %@", [error description]);
+        }
+    }];
+    
 }
 
 

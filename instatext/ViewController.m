@@ -393,8 +393,9 @@
         
         NSLog(@"touch x and y %f %f", touch.x , touch.y);
         
-        if (CGRectContainsPoint(CGRectMake(view.frame.origin.x, view.frame.origin.y, 40, 40), touch)) {
+        if ([self.cropView isEqual:view]  && CGRectContainsPoint(CGRectMake(view.frame.origin.x, view.frame.origin.y, 40, 40), touch)) {
             NSLog(@"cancel view clicked");
+            
             [viewsinInstaView removeObject:view];
             [view removeFromSuperview];
             return;

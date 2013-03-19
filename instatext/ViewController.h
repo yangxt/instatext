@@ -29,6 +29,7 @@
     UITextView *textView;
     UIImageView *instaTextView;
     UIImageView *borderView;
+    UIImageView *cancelView;
     
     double lastArea;
     double currentArea;
@@ -57,6 +58,7 @@
 }
 @property (nonatomic, assign) CGRect crop;
 @property (nonatomic, strong) UIView *cropView;
+@property (nonatomic, strong) UIView *cancelView;
 @property (strong, atomic) ALAssetsLibrary *library;
 
 @end

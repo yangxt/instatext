@@ -29,6 +29,10 @@
 		FAA5238216F7777C007FB686 /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA5238116F7777C007FB686 /* ALAssetsLibrary+CustomPhotoAlbum.m */; };
 		FAA5238316F77818007FB686 /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA5238116F7777C007FB686 /* ALAssetsLibrary+CustomPhotoAlbum.m */; };
 		FAA5238516F77846007FB686 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA5238416F77846007FB686 /* AssetsLibrary.framework */; };
+		FAA5238816F78792007FB686 /* cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA5238616F78792007FB686 /* cancel.png */; };
+		FAA5238916F78792007FB686 /* cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA5238716F78792007FB686 /* cancel@2x.png */; };
+		FAA5238A16F78B6A007FB686 /* cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA5238616F78792007FB686 /* cancel.png */; };
+		FAA5238B16F78B6C007FB686 /* cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA5238716F78792007FB686 /* cancel@2x.png */; };
 		FAA5D7A216F762200026826D /* felt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAE0A96C16F5E6390016A6B7 /* felt.ttf */; };
 		FAA5D7A316F762200026826D /* Filxgirl.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAE0A96D16F5E6390016A6B7 /* Filxgirl.ttf */; };
 		FAA5D7A416F762200026826D /* GEEKB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAE0A96E16F5E6390016A6B7 /* GEEKB.ttf */; };
@@ -414,6 +418,8 @@
 		FAA5238016F7777C007FB686 /* ALAssetsLibrary+CustomPhotoAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAssetsLibrary+CustomPhotoAlbum.h"; sourceTree = "<group>"; };
 		FAA5238116F7777C007FB686 /* ALAssetsLibrary+CustomPhotoAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALAssetsLibrary+CustomPhotoAlbum.m"; sourceTree = "<group>"; };
 		FAA5238416F77846007FB686 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		FAA5238616F78792007FB686 /* cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancel.png; sourceTree = "<group>"; };
+		FAA5238716F78792007FB686 /* cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel@2x.png"; sourceTree = "<group>"; };
 		FAB0049A16F0F6D4009C82BE /* text.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.plist; sourceTree = "<group>"; };
 		FAB004A016F109F9009C82BE /* Stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stack.h; sourceTree = "<group>"; };
 		FAB004A116F109F9009C82BE /* Stack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stack.m; sourceTree = "<group>"; };
@@ -1109,6 +1115,8 @@
 		FAE0A9C516F5E7D50016A6B7 /* static */ = {
 			isa = PBXGroup;
 			children = (
+				FAA5238616F78792007FB686 /* cancel.png */,
+				FAA5238716F78792007FB686 /* cancel@2x.png */,
 				FAE0A9C616F5E8090016A6B7 /* borders */,
 				FAE0A9EA16F5E8090016A6B7 /* stickers */,
 				FAE0AA2616F5E8090016A6B7 /* themes */,
@@ -1657,6 +1665,8 @@
 				FAE0AAF316F5E8090016A6B7 /* 56.png in Resources */,
 				FAE0AAF416F5E8090016A6B7 /* 57.png in Resources */,
 				FAE0AAF516F5E8090016A6B7 /* 58.png in Resources */,
+				FAA5238A16F78B6A007FB686 /* cancel.png in Resources */,
+				FAA5238B16F78B6C007FB686 /* cancel@2x.png in Resources */,
 				FAE0AAF616F5E8090016A6B7 /* 59.png in Resources */,
 				FAE0AAF716F5E8090016A6B7 /* 6.png in Resources */,
 				FAE0AAF816F5E8090016A6B7 /* 7.png in Resources */,
@@ -1714,6 +1724,8 @@
 				FAE0A9BD16F5E6390016A6B7 /* virginlo.ttf in Resources */,
 				FAE0A9BE16F5E6390016A6B7 /* waltographUI.ttf in Resources */,
 				FAE0A9BF16F5E6390016A6B7 /* YIKES.TTF in Resources */,
+				FAA5238816F78792007FB686 /* cancel.png in Resources */,
+				FAA5238916F78792007FB686 /* cancel@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -100,8 +100,8 @@
     UIView *bottomView = [botttomBar peekObject];
     [bottomView setBackgroundColor:[UIColor greenColor]];
     
-    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-    
+    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+    [backButton setBackgroundColor:[UIColor greenColor]];
     [backButton setTitle:@"Back" forState:UIControlStateNormal];
     [backButton setTitle:@"Back" forState:UIControlStateSelected];
     
@@ -302,10 +302,13 @@
                 [self.view setUserInteractionEnabled:YES];
                 NSLog(@"item plist is null Lets start the magic :) Booyeah !");
                 UIImageView *itemInstance = [[UIImageView alloc] initWithImage:item.image];
+
                 NSLog(@"frame dimension %f", itemInstance.frame.size.width);
-                [itemInstance setFrame:CGRectMake(40, 40, 140, 140)];
+                
+                
+                [itemInstance setFrame:CGRectMake(0, 0, 140, 140)];
                 [itemInstance setUserInteractionEnabled:YES];
-                [itemInstance.layer setBorderColor: [[UIColor blueColor] CGColor]];
+                [itemInstance.layer setBorderColor: [[UIColor yellowColor] CGColor]];
                 [itemInstance.layer setBorderWidth: 2.0];
                 
                 [itemInstance setUserInteractionEnabled:YES];
@@ -321,6 +324,7 @@
                 bottomRightView = [self newCornerView];
                 // Adding currently added view in views in InstaView array
                 [viewsinInstaView addObject:itemInstance];
+                
                 self.cropView = itemInstance;
                 [instaTextView addSubview:itemInstance];
             }
@@ -328,6 +332,8 @@
         }
     
 }
+
+
 
 #pragma UIImagePickerController Delegate
 
@@ -382,12 +388,34 @@
     NSLog(@"touches start");
     for (UIView *view in viewsinInstaView) {
         CGPoint touch = [[allTouches anyObject] locationInView:instaTextView];
-        NSLog(@"view x -> %f y -> %f width -> %f height %f", view.frame.origin.x, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
+        
+        NSLog(@"view x -> %f y -> %f width -> %f height %f", cancelView.frame.origin.x, cancelView.frame.origin.y, cancelView.frame.size.width, cancelView.frame.size.height);
+        
+        NSLog(@"touch x and y %f %f", touch.x , touch.y);
+        
+        if (CGRectContainsPoint(CGRectMake(view.frame.origin.x, view.frame.origin.y, 40, 40), touch)) {
+            NSLog(@"cancel view clicked");
+            [viewsinInstaView removeObject:view];
+            [view removeFromSuperview];
+            return;
+        }
         if (CGRectContainsPoint(view.frame, touch )) {
             NSLog(@"yeah point contained in a view");
             self.cropView = view;
             // Ensuring the currently selected view is brought to front. Taking care of overlapping view case
             [instaTextView bringSubviewToFront:self.cropView];
+            if (cancelView) {
+                [cancelView removeFromSuperview];
+            }
+            
+            cancelView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cancel.png"]];
+            [cancelView setUserInteractionEnabled:YES];
+            [self.cropView addSubview:cancelView];
+            
+            [self.cropView setUserInteractionEnabled:YES];
+            [self.cropView bringSubviewToFront:cancelView];
+           
+            
             [viewsinInstaView removeObject:self.cropView];
             [viewsinInstaView insertObject:self.cropView atIndex:0];
             
@@ -673,7 +701,6 @@
     currentTouches = [[event allTouches] count];
 }
 
-
 - (UIImage *)imageByCropping:(UIImage *)image toRect:(CGRect)rect
 {
     if (UIGraphicsBeginImageContextWithOptions) {
@@ -740,6 +767,7 @@
     bottomLeftView.frame = CGRectMake(0, y + height, x, selfHeight - y - height);
     bottomRightView.frame = CGRectMake(x + width, y + height, selfWidth - x - width, selfHeight - y - height);
     
+    
     [self didChangeValueForKey:@"crop"];
 }
 
@@ -795,7 +823,25 @@
         }
     } while (change);
     
-    self.cropView.frame = frame;
+    
+    
+    [cancelView removeFromSuperview];
+    
+    cancelView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cancel.png"]];
+   
+    [self.cropView setUserInteractionEnabled:YES];
+    [cancelView setUserInteractionEnabled:YES];
+    [self.cropView addSubview:cancelView];
+    
+    [self.cropView bringSubviewToFront:cancelView];
+    double minSide = 0.0f;
+    minSide = frame.size.width;
+    if (frame.size.height > minSide) {
+        minSide = frame.size.height;
+    }
+    
+    self.cropView.frame = CGRectMake(frame.origin.x, frame.origin.y, minSide, minSide);
+
 }
 
 //taking screenshot of the screen so to share on various social networks
